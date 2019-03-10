@@ -19,3 +19,21 @@ print_string:
     return:
         popa        ; Restore original register values
         ret         ; Return
+ 
+ ;
+ ; A function that prints the newline followed by the
+ ; carriage return character.
+ ; 
+
+ print_nl:
+    pusha           ; Push all registers to the stack
+    mov ah, 0x0e    ; int=10/ah=0x0e -> BIOS teletype output
+
+    mov al, 0x0a    ; Newline char
+    int 0x10        ; print('\n')
+
+    mov al, 0x0d    ; Carriage return
+    int 0x10        ; print('\r')
+
+    popa            ; Restore original register values
+    ret
