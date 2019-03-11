@@ -25,7 +25,7 @@
 ; with offset BX).
 
 disk_load:
-    ; pusha           ; Push all registers to the stack.
+    pusha           ; Push all registers to the stack.
     push dx         ; Store DX on the stack so later we can recall
                     ; how many sectors were requested to be read,
                     ; even if it is altered in the meanwhile.
@@ -45,7 +45,7 @@ disk_load:
     cmp dh, al      ; if AL (sectors read) != DH (sectors expected)
     jne disk_error  ;   dispaly error message
 
-    ; popa            ; Restore the original values of the registers
+    popa            ; Restore the original values of the registers
     ret             ; Return
     
     cf_set:
