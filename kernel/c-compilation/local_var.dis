@@ -1,0 +1,36 @@
+00000000  55                push ebp
+00000001  89E5              mov ebp,esp
+00000003  83EC10            sub esp,byte +0x10
+00000006  C745FCBABA0000    mov dword [ebp-0x4],0xbaba
+0000000D  8B45FC            mov eax,[ebp-0x4]
+00000010  C9                leave
+00000011  C3                ret
+00000012  0000              add [eax],al
+00000014  1400              adc al,0x0
+00000016  0000              add [eax],al
+00000018  0000              add [eax],al
+0000001A  0000              add [eax],al
+0000001C  017A52            add [edx+0x52],edi
+0000001F  0001              add [ecx],al
+00000021  7C08              jl 0x2b
+00000023  011B              add [ebx],ebx
+00000025  0C04              or al,0x4
+00000027  0488              add al,0x88
+00000029  0100              add [eax],eax
+0000002B  001C00            add [eax+eax],bl
+0000002E  0000              add [eax],al
+00000030  1C00              sbb al,0x0
+00000032  0000              add [eax],al
+00000034  CC                int3
+00000035  FF                db 0xff
+00000036  FF                db 0xff
+00000037  FF12              call [edx]
+00000039  0000              add [eax],al
+0000003B  0000              add [eax],al
+0000003D  41                inc ecx
+0000003E  0E                push cs
+0000003F  088502420D05      or [ebp+0x50d4202],al
+00000045  4E                dec esi
+00000046  C50C04            lds ecx,[esp+eax]
+00000049  0400              add al,0x0
+0000004B  00                db 0x00
