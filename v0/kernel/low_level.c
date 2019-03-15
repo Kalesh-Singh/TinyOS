@@ -1,3 +1,5 @@
+#include "low_level.h"
+
 //
 // NOTE: The port number is expected to be sepcified in DX.
 //
@@ -22,7 +24,7 @@ void port_byte_out(unsigned short port, unsigned char data) {
     // "a" (data) means: load EAX with data
     // "d" (port) means: load EDX with port
 
-    __asm__("out %%al, %%dx" : "a" (data) : "d" (port));
+    __asm__("out %%al, %%dx" : : "a" (data), "d" (port));
 }
 
 unsigned short port_word_in(unsigned short port) {
@@ -38,5 +40,5 @@ void port_word_out(unsigned short port, unsigned short data) {
     // A handy C wrapper function that writes a word
     // (2 bytes) to the specified port.
 
-    __asm__("out %%ax, %%dx" : "a" (data) : "d" (port));
+    __asm__("out %%ax, %%dx" : : "a" (data), "d" (port));
 }
