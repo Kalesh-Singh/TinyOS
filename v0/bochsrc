@@ -1,0 +1,9 @@
+# You must install bochs and bochs-x gui
+# sudo apt install bochs
+# sudo apt install bochs-x
+
+# Tell bochs to use our os image code as though it
+# were a floppy disk inserted into a computer at 
+# boot time.
+floppya: 1_44=os-kernel.img, status=inserted
+boot: a
